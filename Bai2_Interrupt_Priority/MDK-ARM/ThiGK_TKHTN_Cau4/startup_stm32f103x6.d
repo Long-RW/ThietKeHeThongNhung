@@ -1,1 +1,0 @@
-thigk_tkhtn_cau4\startup_stm32f103x6.o: startup_stm32f103x6.s
