@@ -1,7 +1,6 @@
 /******************************************************************************************************************
 @File:  	CLCD 8BIT (Character LCD 8Bit Mode)
-@Author:  Khue Nguyen
-
+@Author:  Hoang Long
 
 Huong dan su dung:
 - Su dung thu vien HAL
@@ -19,7 +18,7 @@ CLCD_4BIT_Init(&LCD1, 16, 2, CS_GPIO_Port, CS_Pin, EN_GPIO_Port, EN_Pin,
 									D6_GPIO_Port, D6_Pin, D7_GPIO_Port, D7_Pin);
 - Su dung cac ham truyen dia chi cua LCD do: 
 CLCD__SetCursor(&LCD1, 0, 0);
-CLCD_WriteString(&LCD1,"Hello anh em");	
+CLCD_WriteString(&LCD1,"Hello World");	
 ******************************************************************************************************************/
 #include "CLCD.h"
 
