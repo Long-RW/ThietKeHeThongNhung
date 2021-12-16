@@ -1,0 +1,26 @@
+--cpu Cortex-M3
+"bai4_adc_single\startup_stm32f103x6.o"
+"bai4_adc_single\main.o"
+"bai4_adc_single\stm32f1xx_it.o"
+"bai4_adc_single\stm32f1xx_hal_msp.o"
+"bai4_adc_single\clcd.o"
+"bai4_adc_single\stm32f1xx_hal_gpio_ex.o"
+"bai4_adc_single\stm32f1xx_hal_adc.o"
+"bai4_adc_single\stm32f1xx_hal_adc_ex.o"
+"bai4_adc_single\stm32f1xx_hal.o"
+"bai4_adc_single\stm32f1xx_hal_rcc.o"
+"bai4_adc_single\stm32f1xx_hal_rcc_ex.o"
+"bai4_adc_single\stm32f1xx_hal_gpio.o"
+"bai4_adc_single\stm32f1xx_hal_dma.o"
+"bai4_adc_single\stm32f1xx_hal_cortex.o"
+"bai4_adc_single\stm32f1xx_hal_pwr.o"
+"bai4_adc_single\stm32f1xx_hal_flash.o"
+"bai4_adc_single\stm32f1xx_hal_flash_ex.o"
+"bai4_adc_single\stm32f1xx_hal_exti.o"
+"bai4_adc_single\stm32f1xx_hal_tim.o"
+"bai4_adc_single\stm32f1xx_hal_tim_ex.o"
+"bai4_adc_single\system_stm32f1xx.o"
+--strict --scatter "Bai4_ADC_Single\Bai4_ADC_Single.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "Bai4_ADC_Single.map" -o Bai4_ADC_Single\Bai4_ADC_Single.axf
