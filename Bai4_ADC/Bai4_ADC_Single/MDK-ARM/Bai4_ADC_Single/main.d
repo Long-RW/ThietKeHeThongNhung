@@ -27,5 +27,5 @@ bai4_adc_single\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc_ex
 bai4_adc_single\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
 bai4_adc_single\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 bai4_adc_single\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
-bai4_adc_single\main.o: ..\..\STM32_Device_Lib-master\Device Lib\Inc\CLCD.h
+bai4_adc_single\main.o: ..\..\..\STM32_Device_Lib-master\Device Lib\Inc\CLCD.h
 bai4_adc_single\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

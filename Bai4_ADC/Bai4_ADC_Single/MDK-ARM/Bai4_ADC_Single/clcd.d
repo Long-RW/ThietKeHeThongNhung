@@ -1,5 +1,5 @@
-bai4_adc_single\clcd.o: ..\..\STM32_Device_Lib-master\Device Lib\Src\CLCD.c
-bai4_adc_single\clcd.o: ..\..\STM32_Device_Lib-master\Device Lib\Inc\CLCD.h
+bai4_adc_single\clcd.o: ..\..\..\STM32_Device_Lib-master\Device Lib\Src\CLCD.c
+bai4_adc_single\clcd.o: ..\..\..\STM32_Device_Lib-master\Device Lib\Inc\CLCD.h
 bai4_adc_single\clcd.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
 bai4_adc_single\clcd.o: ../Core/Inc/stm32f1xx_hal_conf.h
 bai4_adc_single\clcd.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h

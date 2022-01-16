@@ -59,16 +59,51 @@ static void MX_ADC1_Init(void);
 /* USER CODE BEGIN 0 */
 CLCD_Name LCD1;
 char LCD_send[16];
-uint16_t u16_ADCVal;
-float ResValue;
+uint16_t ADC_Val[2];
+float Temp_hot;
+float Temp_cold;
+uint8_t boolean = 0;
+void ADC_Select_CH0(void)
+{
+  /** Configure Regular Channel
+  */
+	ADC_ChannelConfTypeDef sConfig = {0};
+	
+  sConfig.Channel = ADC_CHANNEL_0;
+  sConfig.Rank = ADC_REGULAR_RANK_1;
+  sConfig.SamplingTime = ADC_SAMPLETIME_71CYCLES_5;
+  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+}
+void ADC_Select_CH1(void)
+{
+  /** Configure Regular Channel
+  */
+	ADC_ChannelConfTypeDef sConfig = {0};
+	
+  sConfig.Channel = ADC_CHANNEL_1;
+  sConfig.Rank = ADC_REGULAR_RANK_1;
+  sConfig.SamplingTime = ADC_SAMPLETIME_239CYCLES_5;
+  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+}
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
   /* Prevent unused argument(s) compilation warning */
-  UNUSED(hadc);
-	if(hadc->Instance == ADC1)		//Neu ngat ADC1
+  if(hadc->Instance == ADC1)
 	{
-		u16_ADCVal = HAL_ADC_GetValue(&hadc1);
-		ResValue = (float)u16_ADCVal/4095*10000;
+		if(boolean == 0)
+		{
+			ADC_Val[0] = HAL_ADC_GetValue(&hadc1);
+		}
+		if(boolean == 1)
+		{
+			ADC_Val[1] = HAL_ADC_GetValue(&hadc1);
+		}
 	}
 }
 /* USER CODE END 0 */
@@ -114,16 +149,29 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-		
+
     /* USER CODE BEGIN 3 */
+		ADC_Select_CH0();
+		boolean = 0;
 		HAL_ADC_Start_IT(&hadc1);
-		HAL_Delay(50);
+		HAL_Delay(10);
+		
+		ADC_Select_CH1();
+		boolean = 1;
+		HAL_ADC_Start_IT(&hadc1);
+		HAL_Delay(10);
+		
 		CLCD_SetCursor(&LCD1, 0, 0);
-		CLCD_WriteString(&LCD1, "Bien tro: ");
-		sprintf(LCD_send,"%f",ResValue);
+		CLCD_WriteString(&LCD1, "ADC1: ");
+		CLCD_SetCursor(&LCD1, 7, 0);
+		CLCD_WriteString(&LCD1, "ADC2: ");
 		CLCD_SetCursor(&LCD1,0,1);
+		sprintf(LCD_send,"%d",ADC_Val[0]);
 		CLCD_WriteString(&LCD1,LCD_send);
-		HAL_Delay(1000);
+		CLCD_SetCursor(&LCD1,7,1);
+		sprintf(LCD_send,"%d",ADC_Val[1]);
+		CLCD_WriteString(&LCD1,LCD_send);
+		HAL_Delay(1000);		
   }
   /* USER CODE END 3 */
 }
@@ -190,8 +238,8 @@ static void MX_ADC1_Init(void)
   /** Common config
   */
   hadc1.Instance = ADC1;
-  hadc1.Init.ScanConvMode = ADC_SCAN_DISABLE;
-  hadc1.Init.ContinuousConvMode = DISABLE;
+  hadc1.Init.ScanConvMode = ADC_SCAN_ENABLE;
+  hadc1.Init.ContinuousConvMode = ENABLE;
   hadc1.Init.DiscontinuousConvMode = DISABLE;
   hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
@@ -200,16 +248,25 @@ static void MX_ADC1_Init(void)
   {
     Error_Handler();
   }
-  /** Configure Regular Channel
-  */
-  sConfig.Channel = ADC_CHANNEL_0;
-  sConfig.Rank = ADC_REGULAR_RANK_1;
-  sConfig.SamplingTime = ADC_SAMPLETIME_239CYCLES_5;
-  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN ADC1_Init 2 */
+//  /** Configure Regular Channel
+//  */
+//  sConfig.Channel = ADC_CHANNEL_0;
+//  sConfig.Rank = ADC_REGULAR_RANK_1;
+//  sConfig.SamplingTime = ADC_SAMPLETIME_71CYCLES_5;
+//  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+//  {
+//    Error_Handler();
+//  }
+//  /** Configure Regular Channel
+//  */
+//  sConfig.Channel = ADC_CHANNEL_1;
+//  sConfig.Rank = ADC_REGULAR_RANK_2;
+//  sConfig.SamplingTime = ADC_SAMPLETIME_239CYCLES_5;
+//  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+//  {
+//    Error_Handler();
+//  }
+//  /* USER CODE BEGIN ADC1_Init 2 */
 
   /* USER CODE END ADC1_Init 2 */
 

@@ -1,9 +1,9 @@
 --cpu Cortex-M3
 "bai4_adc_single\startup_stm32f103x6.o"
+"bai4_adc_single\clcd.o"
 "bai4_adc_single\main.o"
 "bai4_adc_single\stm32f1xx_it.o"
 "bai4_adc_single\stm32f1xx_hal_msp.o"
-"bai4_adc_single\clcd.o"
 "bai4_adc_single\stm32f1xx_hal_gpio_ex.o"
 "bai4_adc_single\stm32f1xx_hal_adc.o"
 "bai4_adc_single\stm32f1xx_hal_adc_ex.o"
