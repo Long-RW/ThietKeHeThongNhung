@@ -1,0 +1,23 @@
+--cpu Cortex-M3
+"rtos_schedular\startup_stm32f103x6.o"
+"rtos_schedular\main.o"
+"rtos_schedular\stm32f1xx_it.o"
+"rtos_schedular\stm32f1xx_hal_msp.o"
+"rtos_schedular\stm32f1xx_hal_gpio_ex.o"
+"rtos_schedular\stm32f1xx_hal_tim.o"
+"rtos_schedular\stm32f1xx_hal_tim_ex.o"
+"rtos_schedular\stm32f1xx_hal.o"
+"rtos_schedular\stm32f1xx_hal_rcc.o"
+"rtos_schedular\stm32f1xx_hal_rcc_ex.o"
+"rtos_schedular\stm32f1xx_hal_gpio.o"
+"rtos_schedular\stm32f1xx_hal_dma.o"
+"rtos_schedular\stm32f1xx_hal_cortex.o"
+"rtos_schedular\stm32f1xx_hal_pwr.o"
+"rtos_schedular\stm32f1xx_hal_flash.o"
+"rtos_schedular\stm32f1xx_hal_flash_ex.o"
+"rtos_schedular\stm32f1xx_hal_exti.o"
+"rtos_schedular\system_stm32f1xx.o"
+--strict --scatter "RTOS_Schedular\RTOS_Schedular.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "RTOS_Schedular.map" -o RTOS_Schedular\RTOS_Schedular.axf
